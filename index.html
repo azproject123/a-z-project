@@ -27,14 +27,14 @@
             align-items: center;
             min-height: 100vh;
             overflow-x: hidden;
-            padding: 2rem 1.5rem;
+            padding: 1.5rem 1.5rem;
             box-sizing: border-box;
         }
 
         .header-container {
             text-align: center;
-            margin-top: 1rem;
-            margin-bottom: 4rem;
+            margin-top: 0.5rem;
+            margin-bottom: 2rem;
             width: 100%;
         }
 
@@ -117,8 +117,8 @@
         /* Container Hidden Until Unlocked */
         .container {
             display: none;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.75rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
             width: 100%;
             max-width: 1100px;
             margin: 0 auto;
@@ -132,8 +132,8 @@
         .card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 14px;
-            padding: 2.25rem 1.25rem 1.75rem 1.25rem;
+            border-radius: 12px;
+            padding: 1.25rem 1rem 1rem 1rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -149,8 +149,8 @@
             position: absolute;
             top: -20px;
             right: -20px;
-            width: 70px;
-            height: 70px;
+            width: 55px;
+            height: 55px;
             border-radius: 50px;
             opacity: 0.06;
             background: var(--theme-color);
@@ -159,21 +159,21 @@
         }
 
         .game-graphic {
-            width: 44px;
-            height: 4px;
+            width: 36px;
+            height: 3px;
             border-radius: 2px;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.85rem;
             transition: all 0.3s ease;
             background: var(--theme-color);
             box-shadow: 0 0 10px var(--theme-color);
         }
 
         .card h2 {
-            margin: 0 0 1.75rem 0;
-            font-size: 1.25rem;
+            margin: 0 0 1rem 0;
+            font-size: 1.05rem;
             font-weight: 700;
             color: #e2e8f0;
-            min-height: 3rem;
+            min-height: 2.2rem;
             display: flex;
             align-items: center;
         }
@@ -181,10 +181,10 @@
         .btn {
             color: var(--theme-color);
             text-decoration: none;
-            padding: 0.65rem 1rem;
-            border-radius: 8px;
+            padding: 0.45rem 0.75rem;
+            border-radius: 6px;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             transition: all 0.3s ease;
@@ -197,7 +197,7 @@
         }
 
         .card:hover {
-            transform: translateY(-8px) scale(1.02);
+            transform: translateY(-6px) scale(1.02);
             border-color: var(--theme-color);
             box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 25px var(--glow-color);
         }
@@ -208,7 +208,7 @@
         }
 
         .card:hover .game-graphic { 
-            width: 60px; 
+            width: 50px; 
         }
 
         .card:hover .btn { 
@@ -280,12 +280,16 @@
             <a href="game7/index.html" class="btn">Play Game</a>
         </div> 
         <div class="card" style="--theme-color: #ff69b4; --glow-color: rgba(255, 105, 180, 0.25);">
-    <div class="game-graphic"></div>
-    <h2>Retro Bowl College</h2>
-    <a href="game8/index.html" class="btn">Play Game</a>
-</div>
-
-        
+            <div class="game-graphic"></div>
+            <h2>Retro Bowl College</h2>
+            <a href="game8/index.html" class="btn">Play Game</a>
+        </div>
+        <!-- Game 9: Baseball Bros -->
+        <div class="card" style="--theme-color: #ef4444; --glow-color: rgba(239, 68, 68, 0.25);">
+            <div class="game-graphic"></div>
+            <h2>Baseball Bros</h2>
+            <a href="game9/index.html" class="btn">Play Game</a>
+        </div>
     </div>
 
     <script>
@@ -294,32 +298,26 @@
         const keyField = document.getElementById('keyField');
 
         function openPortal() {
-            lockGate.style.display = 'none';
-            gameGrid.style.display = 'grid';
-        }
-
-        // Keep it unlocked if they already typed the password
-        if (localStorage.getItem('unlocked_arcade') === 'true') {
-            openPortal();
-        }
-
-        function verifyKey() {
-            if (keyField.value === "Jets") {
-                localStorage.setItem('unlocked_arcade', 'true');
-                openPortal();
-            } else {
-                alert('Wrong Key(Key gets changed everyday)');
-                keyField.value = '';
-                keyField.focus();
-            }
-        }
-
-        keyField.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                verifyKey();
-            }
-        });
-    </script>
-
-</body>
-</html>
+Use code with caution.
+lockGate.style.display = 'none';
+gameGrid.style.display = 'grid';
+}
+// Keep it unlocked if they already typed the password
+if (localStorage.getItem('unlocked_arcade') === 'true') {
+openPortal();
+}
+function verifyKey() {
+if (keyField.value === "Jets") {
+localStorage.setItem('unlocked_arcade', 'true');
+openPortal();
+} else {
+alert('Wrong Key(Key gets changed everyday)');
+keyField.value = '';
+keyField.focus();
+}
+}
+keyField.addEventListener('keydown', function(e) {
+if (e.key === 'Enter') {
+verifyKey();
+}
+});
