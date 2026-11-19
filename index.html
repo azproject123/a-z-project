@@ -27,7 +27,7 @@
             align-items: center;
             min-height: 100vh;
             overflow-x: hidden;
-            padding: 1.5rem 1.5rem;
+            padding: 1.5rem;
             box-sizing: border-box;
         }
 
@@ -57,66 +57,8 @@
             text-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
         }
 
-        /* Lock Screen Key System UI */
-        .lock-screen {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 14px;
-            padding: 3rem 2rem;
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.8);
-            margin-top: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .lock-screen h3 {
-            margin: 0;
-            font-size: 1.15rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #e2e8f0;
-        }
-
-        .key-input {
-            width: 100%;
-            background: #000;
-            border: 1px solid #ef4444;
-            padding: 0.8rem;
-            border-radius: 8px;
-            color: #fff;
-            text-align: center;
-            font-size: 1rem;
-            outline: none;
-            box-sizing: border-box;
-        }
-
-        .lock-btn {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid #ef4444;
-            color: #ef4444;
-            padding: 0.75rem;
-            border-radius: 8px;
-            width: 100%;
-            cursor: pointer;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: all 0.3s ease;
-        }
-
-        .lock-btn:hover {
-            background: #ef4444;
-            color: #05050f;
-            box-shadow: 0 0 15px #ef4444;
-        }
-
-        /* Container Hidden Until Unlocked */
         .container {
-            display: none;
+            display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 1rem;
             width: 100%;
@@ -140,7 +82,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.7);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
@@ -151,11 +93,12 @@
             right: -20px;
             width: 55px;
             height: 55px;
-            border-radius: 50px;
+            border-radius: 50%;
             opacity: 0.06;
             background: var(--theme-color);
             border: 4px dashed var(--theme-color);
             transition: transform 0.6s ease, opacity 0.4s ease;
+            pointer-events: none;
         }
 
         .game-graphic {
@@ -176,6 +119,7 @@
             min-height: 2.2rem;
             display: flex;
             align-items: center;
+            justify-content: center;
         }
 
         .btn {
@@ -216,6 +160,10 @@
             color: #05050f; 
             box-shadow: 0 0 15px var(--theme-color); 
         }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.25rem; }
+        }
     </style>
 </head>
 <body>
@@ -225,14 +173,6 @@
         <span class="subtitle">made by #1 bills glazer</span>
     </div>
 
-    <!-- Password Input UI Box -->
-    <div class="lock-screen" id="lockGate">
-        <h3>System Access Required</h3>
-        <input type="password" class="key-input" id="keyField" placeholder="Enter Password...">
-        <button class="lock-btn" onclick="verifyKey()">Unlock</button>
-    </div>
-
-    <!-- Main Arcade Portal -->
     <div class="container" id="gameGrid">
         <!-- Game 1: Football Bros -->
         <div class="card" style="--theme-color: #00f2fe; --glow-color: rgba(0, 242, 254, 0.25);">
@@ -261,29 +201,35 @@
             <h2>Drive Mad</h2>
             <a href="game4/index.html" class="btn">Play Game</a>
         </div>
-        <!-- Game 5: Block Blast -->
+
+        <!-- Game 5: Tiny Fishing -->
         <div class="card" style="--theme-color: #a855f7; --glow-color: rgba(168, 85, 247, 0.25);">
             <div class="game-graphic"></div>
             <h2>Tiny Fishing</h2>
             <a href="game5/index.html" class="btn">Play Game</a>
         </div>
+
         <!-- Game 6: Geometry Dash -->
         <div class="card" style="--theme-color: #facc15; --glow-color: rgba(250, 204, 21, 0.25);">
             <div class="game-graphic"></div>
             <h2>Geometry Dash</h2>
             <a href="game6/index.html" class="btn">Play Game</a>
         </div>
+
         <!-- Game 7: Eaglercraft -->
         <div class="card" style="--theme-color: #22c55e; --glow-color: rgba(34, 197, 94, 0.25);">
             <div class="game-graphic"></div>
             <h2>Eaglercraft</h2>
             <a href="game7/index.html" class="btn">Play Game</a>
         </div> 
+
+        <!-- Game 8: Retro Bowl College -->
         <div class="card" style="--theme-color: #ff69b4; --glow-color: rgba(255, 105, 180, 0.25);">
             <div class="game-graphic"></div>
             <h2>Retro Bowl College</h2>
             <a href="game8/index.html" class="btn">Play Game</a>
         </div>
+
         <!-- Game 9: Baseball Bros -->
         <div class="card" style="--theme-color: #ef4444; --glow-color: rgba(239, 68, 68, 0.25);">
             <div class="game-graphic"></div>
@@ -292,32 +238,5 @@
         </div>
     </div>
 
-    <script>
-        const lockGate = document.getElementById('lockGate');
-        const gameGrid = document.getElementById('gameGrid');
-        const keyField = document.getElementById('keyField');
-
-        function openPortal() {
-Use code with caution.
-lockGate.style.display = 'none';
-gameGrid.style.display = 'grid';
-}
-// Keep it unlocked if they already typed the password
-if (localStorage.getItem('unlocked_arcade') === 'true') {
-openPortal();
-}
-function verifyKey() {
-if (keyField.value === "Jets") {
-localStorage.setItem('unlocked_arcade', 'true');
-openPortal();
-} else {
-alert('Wrong Key(Key gets changed everyday)');
-keyField.value = '';
-keyField.focus();
-}
-}
-keyField.addEventListener('keydown', function(e) {
-if (e.key === 'Enter') {
-verifyKey();
-}
-});
+</body>
+</html>
