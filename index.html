@@ -8,8 +8,8 @@
         :root {
             --bg-color: #05050f;
             --grid-color: rgba(99, 102, 241, 0.04);
-            --card-bg: linear-gradient(145deg, rgba(15, 15, 35, 0.8), rgba(5, 5, 15, 0.9));
-            --card-border: rgba(255, 255, 255, 0.05);
+            --card-bg: linear-gradient(145deg, rgba(15, 15, 35, 0.85), rgba(5, 5, 15, 0.95));
+            --card-border: rgba(255, 255, 255, 0.06);
         }
 
         * {
@@ -22,7 +22,7 @@
             background-image: 
                 linear-gradient(var(--grid-color) 2px, transparent 2px),
                 linear-gradient(90deg, var(--grid-color) 2px, transparent 2px),
-                radial-gradient(circle at 50% 50%, #1e1b4b 0%, transparent 70%);
+                radial-gradient(circle at 50% 30%, #1e1b4b 0%, transparent 75%);
             background-size: 30px 30px, 30px 30px, 100% 100%;
             color: #ffffff;
             margin: 0;
@@ -31,18 +31,18 @@
             align-items: center;
             min-height: 100vh;
             overflow-x: hidden;
-            padding: 1.5rem;
+            padding: 1.5rem 1.25rem 3rem;
         }
 
         .header-container {
             text-align: center;
-            margin-top: 0.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             width: 100%;
+            max-width: 1140px;
         }
 
         h1 {
-            font-size: 3.25rem;
+            font-size: 3rem;
             font-weight: 900;
             margin: 0;
             text-transform: uppercase;
@@ -55,18 +55,69 @@
             text-transform: uppercase;
             letter-spacing: 0.4em;
             color: #ef4444;
-            margin-top: 0.75rem;
+            margin-top: 0.6rem;
             display: block;
             text-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
         }
 
+        .controls {
+            display: flex;
+            gap: 0.75rem;
+            width: 100%;
+            max-width: 1140px;
+            margin-bottom: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            max-width: 340px;
+            background: rgba(15, 15, 35, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            padding: 0.55rem 0.9rem;
+            color: #ffffff;
+            font-size: 0.85rem;
+            outline: none;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .search-input::placeholder {
+            color: #64748b;
+        }
+
+        .search-input:focus {
+            border-color: #ef4444;
+            box-shadow: 0 0 12px rgba(239, 68, 68, 0.25);
+        }
+
+        .sort-btn {
+            background: rgba(15, 15, 35, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            padding: 0.55rem 1rem;
+            color: #e2e8f0;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .sort-btn:hover, .sort-btn.active {
+            border-color: #ef4444;
+            color: #ffffff;
+            box-shadow: 0 0 12px rgba(239, 68, 68, 0.25);
+        }
+
         .container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 0.95rem;
             width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
+            max-width: 1140px;
         }
 
         @media (min-width: 1024px) {
@@ -79,50 +130,50 @@
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 12px;
-            padding: 1.25rem 1rem 1rem 1rem;
+            padding: 1.1rem 0.95rem 0.95rem;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
-            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-                        border-color 0.3s ease,
-                        box-shadow 0.3s ease;
+            box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.75);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                        border-color 0.25s ease,
+                        box-shadow 0.25s ease;
         }
 
         .card::before {
             content: '';
             position: absolute;
-            top: -20px;
-            right: -20px;
-            width: 55px;
-            height: 55px;
+            top: -18px;
+            right: -18px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             opacity: 0.06;
             background: var(--theme-color);
             border: 4px dashed var(--theme-color);
-            transition: transform 0.6s ease, opacity 0.4s ease;
+            transition: transform 0.5s ease, opacity 0.3s ease;
             pointer-events: none;
         }
 
         .game-graphic {
-            width: 36px;
+            width: 32px;
             height: 3px;
             border-radius: 2px;
-            margin-bottom: 0.85rem;
-            transition: width 0.3s ease;
+            margin-bottom: 0.7rem;
+            transition: width 0.25s ease;
             background: var(--theme-color);
             box-shadow: 0 0 10px var(--theme-color);
         }
 
         .card h2 {
-            margin: 0 0 1rem 0;
-            font-size: 1.05rem;
+            margin: 0 0 0.85rem 0;
+            font-size: 1rem;
             font-weight: 700;
             color: #e2e8f0;
-            min-height: 2.5rem;
+            min-height: 2.3rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -131,13 +182,13 @@
         .btn {
             color: var(--theme-color);
             text-decoration: none;
-            padding: 0.5rem 0.75rem;
+            padding: 0.45rem 0.7rem;
             border-radius: 6px;
             font-weight: 700;
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+            letter-spacing: 0.06em;
+            transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
             width: 100%;
             display: inline-block;
             margin-top: auto;
@@ -145,8 +196,7 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* Makes the entire card clickable */
-        .btn::after {
+        .card:not(.coming-soon) .btn::after {
             content: '';
             position: absolute;
             inset: 0;
@@ -158,42 +208,63 @@
         }
 
         @media (hover: hover) {
-            .card:hover {
-                transform: translateY(-6px) scale(1.02);
+            .card:not(.coming-soon):hover {
+                transform: translateY(-5px) scale(1.02);
                 border-color: var(--theme-color);
-                box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 25px var(--glow-color);
+                box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.85), 0 0 22px var(--glow-color);
             }
 
-            .card:hover::before {
+            .card:not(.coming-soon):hover::before {
                 transform: scale(1.4) rotate(25deg);
                 opacity: 0.15;
             }
 
-            .card:hover .game-graphic {
-                width: 50px;
+            .card:not(.coming-soon):hover .game-graphic {
+                width: 48px;
             }
 
-            .card:hover .btn {
+            .card:not(.coming-soon):hover .btn {
                 background: var(--theme-color);
                 color: #05050f;
-                box-shadow: 0 0 15px var(--theme-color);
+                box-shadow: 0 0 14px var(--theme-color);
             }
         }
 
-        .card:focus-within {
-            transform: translateY(-6px) scale(1.02);
+        .card:not(.coming-soon):focus-within {
+            transform: translateY(-5px) scale(1.02);
             border-color: var(--theme-color);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 25px var(--glow-color);
+            box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.85), 0 0 22px var(--glow-color);
         }
 
-        .card:focus-within .btn {
+        .card:not(.coming-soon):focus-within .btn {
             background: var(--theme-color);
             color: #05050f;
         }
 
+        .card.coming-soon {
+            opacity: 0.55;
+            border-style: dashed;
+        }
+
+        .card.coming-soon .btn {
+            cursor: default;
+            pointer-events: none;
+            color: #64748b;
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .no-results {
+            display: none;
+            grid-column: 1 / -1;
+            text-align: center;
+            color: #64748b;
+            padding: 2rem;
+            font-size: 0.95rem;
+        }
+
         @media (max-width: 480px) {
             h1 {
-                font-size: 2.25rem;
+                font-size: 2.15rem;
             }
         }
     </style>
@@ -205,70 +276,79 @@
         <span class="subtitle">made by #1 bills glazer</span>
     </header>
 
-    <main class="container" id="gameGrid">
-        <!-- Game 1: Football Bros -->
-        <div class="card" style="--theme-color: #00f2fe; --glow-color: rgba(0, 242, 254, 0.25);">
-            <div class="game-graphic"></div>
-            <h2>Football Bros</h2>
-            <a href="game1/index.html" class="btn">Play Game</a>
-        </div>
+    <div class="controls">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search games..." aria-label="Search games">
+        <button type="button" id="sortBtn" class="sort-btn">Sort: Default</button>
+    </div>
 
-        <!-- Game 2: Retro Bowl -->
-        <div class="card" style="--theme-color: #f107a3; --glow-color: rgba(241, 7, 163, 0.25);">
-            <div class="game-graphic"></div>
-            <h2>Retro Bowl</h2>
-            <a href="game2/index.html" class="btn">Play Game</a>
-        </div>
+    <main class="container" id="gameGrid"></main>
 
-        <!-- Game 3: Basketball Bros -->
-        <div class="card" style="--theme-color: #ff6b00; --glow-color: rgba(255, 107, 0, 0.25);">
-            <div class="game-graphic"></div>
-            <h2>Basketball Bros</h2>
-            <a href="game3/index.html" class="btn">Play Game</a>
-        </div>
+    <script>
+        // ==========================================
+        // EASY GAME LIST: Edit names or set ready: true
+        // ==========================================
+        const games = [
+            { title: "Football Bros",      folder: "game1/index.html",  color: "#00f2fe", glow: "rgba(0, 242, 254, 0.25)",   ready: true },
+            { title: "Retro Bowl",         folder: "game2/index.html",  color: "#f107a3", glow: "rgba(241, 7, 163, 0.25)",   ready: true },
+            { title: "Basketball Bros",    folder: "game3/index.html",  color: "#ff6b00", glow: "rgba(255, 107, 0, 0.25)",   ready: true },
+            { title: "Drive Mad",          folder: "game4/index.html",  color: "#22c55e", glow: "rgba(34, 197, 94, 0.25)",   ready: true },
+            { title: "Tiny Fishing",       folder: "game5/index.html",  color: "#a855f7", glow: "rgba(168, 85, 247, 0.25)",  ready: true },
+            { title: "Geometry Dash",      folder: "game6/index.html",  color: "#facc15", glow: "rgba(250, 204, 21, 0.25)",  ready: true },
+            { title: "Eaglercraft",        folder: "game7/index.html",  color: "#10b981", glow: "rgba(16, 185, 129, 0.25)",  ready: true },
+            { title: "Retro Bowl College", folder: "game8/index.html",  color: "#ff69b4", glow: "rgba(255, 105, 180, 0.25)", ready: true },
+            { title: "Baseball Bros",      folder: "game9/index.html",  color: "#ef4444", glow: "rgba(239, 68, 68, 0.25)",   ready: true },
+            { title: "Slot 10",            folder: "game10/index.html", color: "#38bdf8", glow: "rgba(56, 189, 248, 0.25)",  ready: false },
+            { title: "Slot 11",            folder: "game11/index.html", color: "#f97316", glow: "rgba(249, 115, 22, 0.25)",  ready: false },
+            { title: "Slot 12",            folder: "game12/index.html", color: "#8b5cf6", glow: "rgba(139, 92, 246, 0.25)",  ready: false },
+            { title: "Slot 13",            folder: "game13/index.html", color: "#ec4899", glow: "rgba(236, 72, 153, 0.25)",  ready: false },
+            { title: "Slot 14",            folder: "game14/index.html", color: "#14b8a6", glow: "rgba(20, 184, 166, 0.25)",  ready: false },
+            { title: "Slot 15",            folder: "game15/index.html", color: "#eab308", glow: "rgba(234, 179, 8, 0.25)",   ready: false },
+            { title: "Slot 16",            folder: "game16/index.html", color: "#6366f1", glow: "rgba(99, 102, 241, 0.25)",  ready: false }
+        ];
 
-        <!-- Game 4: Drive Mad -->
-        <div class="card" style="--theme-color: #22c55e; --glow-color: rgba(34, 197, 94, 0.25);">
-            <div class="game-graphic"></div>
-            <h2>Drive Mad</h2>
-            <a href="game4/index.html" class="btn">Play Game</a>
-        </div>
+        const grid = document.getElementById('gameGrid');
+        const searchInput = document.getElementById('searchInput');
+        const sortBtn = document.getElementById('sortBtn');
+        let isSortedAZ = false;
 
-        <!-- Game 5: Tiny Fishing -->
-        <div class="card" style="--theme-color: #a855f7; --glow-color: rgba(168, 85, 247, 0.25);">
-            <div class="game-graphic"></div>
-            <h2>Tiny Fishing</h2>
-            <a href="game5/index.html" class="btn">Play Game</a>
-        </div>
+        function renderGames() {
+            const query = searchInput.value.toLowerCase().trim();
+            let list = games.map((g, index) => ({ ...g, originalIndex: index }));
 
-        <!-- Game 6: Geometry Dash -->
-        <div class="card" style="--theme-color: #facc15; --glow-color: rgba(250, 204, 21, 0.25);">
-            <div class="game-graphic"></div>
-            <h2>Geometry Dash</h2>
-            <a href="game6/index.html" class="btn">Play Game</a>
-        </div>
+            if (isSortedAZ) {
+                list.sort((a, b) => {
+                    if (a.ready !== b.ready) return a.ready ? -1 : 1;
+                    return a.title.localeCompare(b.title);
+                });
+            }
 
-        <!-- Game 7: Eaglercraft -->
-        <div class="card" style="--theme-color: #22c55e; --glow-color: rgba(34, 197, 94, 0.25);">
-            <div class="game-graphic"></div>
-            <h2>Eaglercraft</h2>
-            <a href="game7/index.html" class="btn">Play Game</a>
-        </div>
+            const filtered = list.filter(g => g.title.toLowerCase().includes(query));
 
-        <!-- Game 8: Retro Bowl College -->
-        <div class="card" style="--theme-color: #ff69b4; --glow-color: rgba(255, 105, 180, 0.25);">
-            <div class="game-graphic"></div>
-            <h2>Retro Bowl College</h2>
-            <a href="game8/index.html" class="btn">Play Game</a>
-        </div>
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="no-results" style="display:block;">No games match your search.</div>`;
+                return;
+            }
 
-        <!-- Game 9: Baseball Bros -->
-        <div class="card" style="--theme-color: #ef4444; --glow-color: rgba(239, 68, 68, 0.25);">
-            <div class="game-graphic"></div>
-            <h2>Baseball Bros</h2>
-            <a href="game9/index.html" class="btn">Play Game</a>
-        </div>
-    </main>
+            grid.innerHTML = filtered.map(game => `
+                <div class="card ${game.ready ? '' : 'coming-soon'}" style="--theme-color: ${game.color}; --glow-color: ${game.glow};">
+                    <div class="game-graphic"></div>
+                    <h2>${game.title}</h2>
+                    <a href="${game.ready ? game.folder : '#'}" class="btn">${game.ready ? 'Play Game' : 'Coming Soon'}</a>
+                </div>
+            `).join('');
+        }
+
+        searchInput.addEventListener('input', renderGames);
+
+        sortBtn.addEventListener('click', () => {
+            isSortedAZ = !isSortedAZ;
+            sortBtn.textContent = isSortedAZ ? 'Sort: A–Z' : 'Sort: Default';
+            sortBtn.classList.toggle('active', isSortedAZ);
+            renderGames();
+        });
+
+        renderGames();
+    </script>
 
 </body>
 </html>
